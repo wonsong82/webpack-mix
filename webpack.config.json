@@ -1,0 +1,13 @@
+{
+    "contentBase": "public",
+    "distPath": "dist",
+    "devServer": {
+        "public": "https://playground.tamice.dev",
+        "port": 8080,
+        "https": true,
+        "ssl": {
+            "key": "/etc/ssl/dev/playground.tamice.dev.key",
+            "cert": "/etc/ssl/dev/playground.tamice.dev.crt"
+        }
+    }
+}
