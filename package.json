@@ -1,89 +1,61 @@
 {
-  "_from": "@wonsong82/webpack-mix@0.0.2",
-  "_id": "@wonsong82/webpack-mix@0.0.2",
-  "_inBundle": false,
-  "_integrity": "sha512-fuKKHpLJPQ8XNHnUVs5OL1A0ck3p2xgeWUCmvnqKJ81vA/V4R5nG9rW/1oMJ01hqjqE795EoHzdgw3Y3wO6+iw==",
-  "_location": "/@wonsong82/webpack-mix",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "@wonsong82/webpack-mix@0.0.2",
     "name": "@wonsong82/webpack-mix",
-    "escapedName": "@wonsong82%2fwebpack-mix",
-    "scope": "@wonsong82",
-    "rawSpec": "0.0.2",
-    "saveSpec": null,
-    "fetchSpec": "0.0.2"
-  },
-  "_requiredBy": [
-    "#DEV:/"
-  ],
-  "_resolved": "https://registry.npmjs.org/@wonsong82/webpack-mix/-/webpack-mix-0.0.2.tgz",
-  "_shasum": "2054ae978d3871ced5f7bc2ab49d38110602edfa",
-  "_spec": "@wonsong82/webpack-mix@0.0.2",
-  "_where": "/var/www/dev/playground",
-  "author": {
-    "name": "Won Song"
-  },
-  "bugs": {
-    "url": "https://github.com/wonsong82/webpack-mix/issues"
-  },
-  "bundleDependencies": false,
-  "dependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
-    "@babel/plugin-proposal-optional-chaining": "^7.8.3",
-    "@babel/preset-env": "^7.8.4",
-    "@babel/preset-flow": "^7.8.3",
-    "@babel/preset-react": "^7.8.3",
-    "@babel/preset-typescript": "^7.8.3",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.4.2",
-    "cssnano": "^4.1.10",
-    "file-loader": "^5.0.2",
-    "less": "^3.10.3",
-    "less-loader": "^5.0.0",
-    "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "^4.13.1",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "postcss-loader": "^3.0.0",
-    "postcss-preset-env": "^6.7.0",
-    "qs": "^6.9.1",
-    "sass-loader": "^8.0.2",
-    "style-loader": "^1.1.3",
-    "stylus": "^0.54.7",
-    "stylus-loader": "^3.0.2",
-    "terser-webpack-plugin": "^2.3.5",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.2",
-    "webpack-hot-middleware": "^2.25.0",
-    "webpack-version-file": "^0.1.6"
-  },
-  "deprecated": false,
-  "description": "Webpack Mix",
-  "homepage": "https://github.com/wonsong82/webpack-mix#readme",
-  "keywords": [
-    "Webpack",
-    "Boilerplate"
-  ],
-  "license": "ISC",
-  "main": "index.js",
-  "name": "@wonsong82/webpack-mix",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wonsong82/webpack-mix.git"
-  },
-  "scripts": {
-    "dev": "npm run development",
-    "development": "npm run staging -- --watch",
-    "devserver": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --type=development",
-    "prod": "npm run production",
-    "production": "node_modules/webpack/bin/webpack.js --no-progress --hide-modules --type=production",
-    "staging": "node_modules/webpack/bin/webpack.js --progress --hide-modules --type=staging",
-    "stg": "npm run staging"
-  },
-  "version": "0.0.2"
+    "version": "0.1.0",
+    "description": "Webpack Mix",
+    "main": "index.js",
+    "scripts": {
+        "dev": "npm run development",
+        "development": "npm run staging -- --watch",
+        "stg": "npm run staging",
+        "prod": "npm run production",
+        "staging": "node_modules/webpack/bin/webpack.js --progress --hide-modules --type=development",
+        "production": "node_modules/webpack/bin/webpack.js --no-progress --hide-modules --type=production",
+        "devserver": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --type=devserver"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wonsong82/webpack-mix.git"
+    },
+    "keywords": [
+        "Webpack",
+        "Boilerplate"
+    ],
+    "author": "Won Song",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/wonsong82/webpack-mix/issues"
+    },
+    "homepage": "https://github.com/wonsong82/webpack-mix#readme",
+    "dependencies": {
+        "@babel/core": "^7.8.4",
+        "@babel/plugin-proposal-class-properties": "^7.8.3",
+        "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+        "@babel/plugin-proposal-optional-chaining": "^7.8.3",
+        "@babel/preset-env": "^7.8.4",
+        "@babel/preset-flow": "^7.8.3",
+        "@babel/preset-react": "^7.8.3",
+        "@babel/preset-typescript": "^7.8.3",
+        "babel-loader": "^8.0.6",
+        "css-loader": "^3.4.2",
+        "cssnano": "^4.1.10",
+        "file-loader": "^5.0.2",
+        "less": "^3.10.3",
+        "less-loader": "^5.0.0",
+        "mini-css-extract-plugin": "^0.9.0",
+        "node-sass": "^4.13.1",
+        "optimize-css-assets-webpack-plugin": "^5.0.3",
+        "postcss-loader": "^3.0.0",
+        "postcss-preset-env": "^6.7.0",
+        "qs": "^6.9.1",
+        "sass-loader": "^8.0.2",
+        "style-loader": "^1.1.3",
+        "stylus": "^0.54.7",
+        "stylus-loader": "^3.0.2",
+        "terser-webpack-plugin": "^2.3.5",
+        "webpack": "^4.41.5",
+        "webpack-cli": "^3.3.10",
+        "webpack-dev-server": "^3.10.2",
+        "webpack-hot-middleware": "^2.25.0",
+        "webpack-version-file": "^0.1.6"
+    }
 }
