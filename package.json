@@ -7,10 +7,10 @@
         "dev": "npm run development",
         "development": "npm run staging -- --watch",
         "stg": "npm run staging",
-        "staging": "node_modules/webpack/bin/webpack.js --progress --hide-modules --type=staging",
         "prod": "npm run production",
+        "staging": "node_modules/webpack/bin/webpack.js --progress --hide-modules --type=development",
         "production": "node_modules/webpack/bin/webpack.js --no-progress --hide-modules --type=production",
-        "devserver": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --type=development"
+        "devserver": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --type=devserver"
     },
     "repository": {
         "type": "git",
