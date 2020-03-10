@@ -1,6 +1,6 @@
 {
     "name": "@wonsong82/webpack-mix",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Webpack Mix",
     "main": "index.js",
     "scripts": {
@@ -26,7 +26,7 @@
         "url": "https://github.com/wonsong82/webpack-mix/issues"
     },
     "homepage": "https://github.com/wonsong82/webpack-mix#readme",
-    "devDependencies": {
+    "dependencies": {
         "@babel/core": "^7.8.4",
         "@babel/plugin-proposal-class-properties": "^7.8.3",
         "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
