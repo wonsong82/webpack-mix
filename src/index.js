@@ -1,1 +1,1 @@
-console.log('This is an example. Please include webpack.entries.js in your project.')
+console.log('This is an example. Please include webpack.entry.json in your project.')
