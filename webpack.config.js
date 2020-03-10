@@ -9,8 +9,15 @@ const
 
 
 // Load config
-const configFile = FS.readFileSync(Path.resolve('./webpack.config.json'))
-const config = JSON.parse(configFile)
+// Load config from app root if config file exists (webpack.config.json)
+// Else load the default config
+const
+    appConfigPath = Path.resolve('./webpack.config.json'),
+    defaultConfigPath = Path.resolve(__dirname + '/config/webpack.config.json'),
+    configPath = FS.existsSync(appConfigPath) ? appConfigPath : defaultConfigPath
+
+let config = require(configPath)
+
 
 
 // Determine runtime environment
@@ -19,7 +26,7 @@ const env = (() => {
     process.argv.forEach( arg => {
         if(
             arg.indexOf('--type=') !== -1 &&
-            ['development', 'production', 'staging'].indexOf(type = arg.replace('--type=', '')) !== -1
+            ['development', 'production', 'devserver'].indexOf(type = arg.replace('--type=', '')) !== -1
         )
             env = type
     })
@@ -27,7 +34,7 @@ const env = (() => {
 })()
 
 if(!env){
-    console.error("--type must be provided and one of the followings: development, production, debug")
+    console.error("--type must be provided and one of the followings: development, production, devserver")
     process.exit()
 }
 
@@ -41,12 +48,12 @@ const getFiles = (path, entriesFiles) => {
         if (FS.lstatSync(subPath).isDirectory()){
             getFiles(subPath, entriesFiles)
         }
-        else if (file === 'webpack.entries.js'){
+        else if (file === 'webpack.entry.json'){
             entriesFiles.push(`${path}/${file}`)
         }
     })
 }
-getFiles(__dirname, entriesFiles)
+getFiles(Path.resolve('.'), entriesFiles)
 
 
 // Make entries
@@ -65,7 +72,9 @@ entriesFiles.forEach( entriesFile => {
     }
 })
 
-
+if(Object.keys(config.entries).length > 1 && config.entries['_webpack-entries-example']){
+    delete config.entries['_webpack-entries-example']
+}
 
 
 // Loaders
@@ -118,7 +127,7 @@ const
             ...cssLoaderNoImport.options,
             modules: {
                 //localIdentName: '[path]__[name]__[local]--[hash:base64:5]'
-                localIdentName: '[local]--[hash:base64:5]'
+                localIdentName: '[name]__[local]--[hash:base64:5]'
             },
             importLoaders: 2
         }
@@ -186,8 +195,6 @@ const
 
 
 
-
-
 // Config
 let Config = {}
 
@@ -198,7 +205,7 @@ Config.PRODUCTION = {
     },
     entry: {...config.entries},
     output: {
-        path: Path.join(__dirname, config.contentBase, config.distPath),
+        path: Path.join(Path.resolve('.'), config.contentBase, config.distPath),
         filename: '[name].js'
     },
     resolve: {
@@ -281,11 +288,11 @@ Config.PRODUCTION = {
 
 
 
-Config.STAGING = {
+Config.DEVELOPMENT = {
     mode: 'development',
     entry: {...config.entries},
     output: {
-        path: Path.join(__dirname, config.contentBase, config.distPath),
+        path: Path.join(Path.resolve('.'), config.contentBase, config.distPath),
         filename: '[name].js'
     },
     resolve: {
@@ -361,13 +368,13 @@ if(config.devServer.https){
     })
 }
 
-Config.DEVELOPMENT = {
+Config.DEVSERVER = {
     mode: 'development',
     entry: {
         ...config.entries
     },
     output: {
-        path: Path.join(__dirname, config.contentBase, config.distPath),
+        path: Path.join(Path.resolve('.'), config.contentBase, config.distPath),
         publicPath: '/' + (config.distPath? config.distPath + '/' : ''),
         filename: '[name].js'
     },
@@ -376,7 +383,7 @@ Config.DEVELOPMENT = {
             "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
             "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"},
         publicPath: '/' + (config.distPath? config.distPath + '/' : ''),
-        contentBase: Path.join(__dirname, config.contentBase),
+        contentBase: Path.join(Path.resolve('.'), config.contentBase),
         hot: true, // // add if(module.hot) module.hot.accept() at the end of the entry.js
         hotOnly: false, // true: only refresh modules (not fully page reload)
         host: '0.0.0.0', // accept from anywhere
@@ -453,10 +460,10 @@ module.exports = () => {
     switch(env){
         case 'production':
             return Config.PRODUCTION
-        case 'staging':
-            return Config.STAGING
         case 'development':
             return Config.DEVELOPMENT
+        case 'devserver':
+            return Config.DEVSERVER
     }
 }
 
