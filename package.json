@@ -1,6 +1,6 @@
 {
     "name": "@wonsong82/webpack-mix",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Webpack Mix",
     "main": "index.js",
     "scripts": {
