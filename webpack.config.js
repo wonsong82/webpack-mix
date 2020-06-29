@@ -306,6 +306,7 @@ Config.DEVELOPMENT = {
             filename: '[name].css'
         })
     ],
+    devtool: 'inline-source-map',
     module: {
         rules: [
             {
